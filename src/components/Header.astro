@@ -1,0 +1,43 @@
+---
+import { Terminal } from "@lucide/astro";
+---
+
+<header
+    class="flex justify-between items-center mx-5 px-10 py-5 border-b border-b-green-950"
+>
+    <a
+        href="/"
+        class="flex items-center gap-3 font-mono text-lg font-bold tracking-[0.25em]"
+    >
+        <span class="border-2 border-green-700 text-green-700">
+            <Terminal />
+        </span>
+        <span class="">BLACKOUT</span>
+        <span class="text-green-400">_</span>
+    </a>
+
+    <nav
+        class="flex justify-center items-center gap-5 text-[10px] text-gris tracking-[0.18em]"
+    >
+        <a href="#nosotros">NOSOTROS</a>
+        <a href="#aprende">APRENDE</a>
+        <a href="#compite">COMPITE</a>
+        <a href="#ranking">RANKING</a>
+
+        <span>|</span>
+
+        <a
+            href="#en-vivo"
+            class="flex gap-2 justify-center items-center text-emerald-500"
+        >
+            <span class="block w-2 h-2 bg-green-700 rounded-full animate-pulse"
+            ></span>
+            <span>EN VIVO</span>
+        </a>
+    </nav>
+
+    <button
+        class="border border-green-850 font-mono text-green-700 px-4 py-2 text-[10px] tracking-[0.2em] cursor-pointer hover:bg-green-800 hover:text-black transition-colors"
+        >UNIRSE A BLACKOUT</button
+    >
+</header>
