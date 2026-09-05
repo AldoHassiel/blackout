@@ -9,8 +9,8 @@ import { Terminal } from "@lucide/astro";
         href="/"
         class="flex items-center gap-3 font-mono text-lg font-bold tracking-[0.25em]"
     >
-        <span class="border-2 border-green-700 text-green-700">
-            <Terminal />
+        <span class="border-2 border-green-700 text-green-700 p-1">
+            <Terminal size="15" />
         </span>
         <span class="">BLACKOUT</span>
         <span class="text-green-400">_</span>
@@ -19,10 +19,18 @@ import { Terminal } from "@lucide/astro";
     <nav
         class="flex justify-center items-center gap-5 text-[10px] text-gris tracking-[0.18em]"
     >
-        <a href="#nosotros">NOSOTROS</a>
-        <a href="#aprende">APRENDE</a>
-        <a href="#compite">COMPITE</a>
-        <a href="#ranking">RANKING</a>
+        <a href="#nosotros" class="hover:text-emerald-500 transition-colors"
+            >NOSOTROS</a
+        >
+        <a href="#aprende" class="hover:text-emerald-500 transition-colors"
+            >APRENDE</a
+        >
+        <a href="#compite" class="hover:text-emerald-500 transition-colors"
+            >COMPITE</a
+        >
+        <a href="#ranking" class="hover:text-emerald-500 transition-colors"
+            >RANKING</a
+        >
 
         <span>|</span>
 
@@ -32,7 +40,7 @@ import { Terminal } from "@lucide/astro";
         >
             <span class="block w-2 h-2 bg-green-700 rounded-full animate-pulse"
             ></span>
-            <span>EN VIVO</span>
+            <span class="hover:text-gray-300">EN VIVO</span>
         </a>
     </nav>
 
