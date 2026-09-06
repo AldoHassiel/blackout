@@ -1,0 +1,46 @@
+---
+import { RadioIcon } from "@lucide/astro";
+---
+
+<article
+    class="flex-1 border border-[#1a2b21] my-10 px-6 flex flex-col justify-between"
+>
+    <div class="flex justify-between items-center border-b border-b-[#1a2b21]">
+        <div class="flex items-center gap-2 text-[11px] py-6">
+            <RadioIcon class="text-[#02d67c] animate-pulse" size={19} />
+            <p class="text-gris tracking-[0.15em]">PRÓXIMA OPERACIÓN</p>
+        </div>
+
+        <p class="text-[11px] text-emerald-500 tracking-[0.15em]">LIVE</p>
+    </div>
+
+    <div class="flex flex-col gap-2">
+        <p class="text-[#02d67c] font-mono text-xs tracking-widest">
+            BLACKOUT // CTF 001
+        </p>
+        <h2 class="font-mono font-bold text-xl">LA CAÍDA DE EVIL CORP</h2>
+
+        <p class="text-parrafos text-sm">El sistema se reinicia en:</p>
+        <div class="font-mono flex gap-5">
+            <div class="flex flex-col items-center">
+                <span class="text-5xl font-bold text-[#02d67c]">02</span>
+                <span class="text-xs text-gris tracking-widest">HORAS</span>
+            </div>
+            <div class="flex flex-col items-center">
+                <span class="text-5xl font-bold text-[#02d67c]">30</span>
+                <span class="text-xs text-gris tracking-widest">MIN</span>
+            </div>
+            <div class="flex flex-col items-center">
+                <span class="text-5xl font-bold text-[#02d67c]">52</span>
+                <span class="text-xs text-gris tracking-widest">SEG</span>
+            </div>
+        </div>
+    </div>
+
+    <div
+        class="flex justify-between text-[11px] py-6 border-t border-t-[#1a2b21]"
+    >
+        <p class="text-gris">64 EQUIPOS INSCRITOS</p>
+        <p>12.10.26</p>
+    </div>
+</article>
