@@ -1,9 +1,18 @@
 ---
 import { RadioIcon } from "@lucide/astro";
+
+const fecha = new Date();
+const dia = fecha.getDate().toString().padStart(2, "0");
+const mes = (fecha.getMonth() + 1).toString().padStart(2, "0");
+const año = fecha.getFullYear().toString().slice(-2);
+
+const horas = "02";
+const minutos = "47";
+const segundos = "56";
 ---
 
 <article
-    class="flex-1 border border-[#1a2b21] my-10 px-6 flex flex-col justify-between"
+    class="flex-1 border border-[#1a2b21] my-10 px-6 flex flex-col justify-between cursor-pointer hover:scale-105 transition-all"
 >
     <div class="flex justify-between items-center border-b border-b-[#1a2b21]">
         <div class="flex items-center gap-2 text-[11px] py-6">
@@ -23,15 +32,21 @@ import { RadioIcon } from "@lucide/astro";
         <p class="text-parrafos text-sm">El sistema se reinicia en:</p>
         <div class="font-mono flex gap-5">
             <div class="flex flex-col items-center">
-                <span class="text-5xl font-bold text-[#02d67c]">02</span>
+                <span class="text-5xl font-bold text-[#02d67c]" id="horas"
+                    >{horas}</span
+                >
                 <span class="text-xs text-gris tracking-widest">HORAS</span>
             </div>
             <div class="flex flex-col items-center">
-                <span class="text-5xl font-bold text-[#02d67c]">30</span>
+                <span class="text-5xl font-bold text-[#02d67c]" id="minutos"
+                    >{minutos}</span
+                >
                 <span class="text-xs text-gris tracking-widest">MIN</span>
             </div>
             <div class="flex flex-col items-center">
-                <span class="text-5xl font-bold text-[#02d67c]">52</span>
+                <span class="text-5xl font-bold text-[#02d67c]" id="segundos"
+                    >{segundos}</span
+                >
                 <span class="text-xs text-gris tracking-widest">SEG</span>
             </div>
         </div>
@@ -41,6 +56,44 @@ import { RadioIcon } from "@lucide/astro";
         class="flex justify-between text-[11px] py-6 border-t border-t-[#1a2b21]"
     >
         <p class="text-gris">64 EQUIPOS INSCRITOS</p>
-        <p>12.10.26</p>
+        <p>{dia}.{mes}.{año}</p>
     </div>
 </article>
+
+<script>
+    const $horas = document.getElementById("horas");
+    const $minutos = document.getElementById("minutos");
+    const $segundos = document.getElementById("segundos");
+
+    let horas = Number($horas?.textContent);
+    let minutos = Number($minutos?.textContent);
+    let segundos = Number($segundos?.textContent);
+
+    let temporizador = setInterval(() => {
+        if (!$horas || !$minutos || !$segundos) return;
+
+        segundos--;
+
+        $horas.textContent = horas.toString().padStart(2, "0");
+        $minutos.textContent = minutos.toString().padStart(2, "0");
+        $segundos.textContent = segundos.toString().padStart(2, "0");
+
+        if (horas == 0 && minutos == 0 && segundos == 0) {
+            clearInterval(temporizador);
+
+            $horas.textContent = "--";
+            $minutos.textContent = "--";
+            $segundos.textContent = "--";
+        }
+
+        if (segundos < 0) {
+            segundos = 59;
+            minutos--;
+        }
+
+        if (minutos < 0) {
+            minutos = 59;
+            horas--;
+        }
+    }, 1000);
+</script>
