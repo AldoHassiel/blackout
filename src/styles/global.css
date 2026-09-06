@@ -8,6 +8,8 @@
 @theme {
     --color-gris: #57675c;
     --color-parrafos: #6d8073;
+    --color-verde-brillante: #02af65;
+    --color-enfasis: #02d67c;
 }
 
 body {
