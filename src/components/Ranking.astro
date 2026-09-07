@@ -1,0 +1,131 @@
+---
+import { ChevronRightIcon } from "@lucide/astro";
+---
+
+<section class="mx-15 py-30 space-y-15">
+    <div class="flex justify-between items-end">
+        <div class="space-y-5">
+            <p class="font-mono text-accent text-xs tracking-widest">
+                04 / TABLERO DE CONTROL
+            </p>
+            <h2 class="font-mono font-bold text-5xl">
+                LOS QUE DEJARON EL
+                <span class="block"
+                    >SISTEMA EN <b class="text-accent">SILENCIO</b></span
+                >
+            </h2>
+        </div>
+
+        <div
+            class="flex items-center justify-center gap-2 text-xs font-mono tracking-widest text-muted-foreground border border-accent/30 p-3"
+        >
+            <span class="w-2 h-2 rounded-full block bg-primary animate-pulse"
+            ></span>
+            <p>ACTUALIZADO HACE 04:12 MIN</p>
+        </div>
+    </div>
+
+    <div class="space-y-3">
+        <table class="w-full border border-border">
+            <thead
+                class="border border-border text-xs font-mono tracking-widest font-normal text-muted-foreground"
+            >
+                <tr>
+                    <th class="py-3">POS.</th>
+                    <th class="text-left">HACKER</th>
+                    <th>CLAN / ESTADO</th>
+                    <th class="text-right">PUNTOS</th>
+                    <th>CAMBIOS</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr
+                    class="text-center text-xs font-mono tracking-widest text-muted-foreground group hover:bg-accent/30 transition-all border-b border-border"
+                >
+                    <td class="py-4 group-hover:text-accent">01</td>
+                    <td class="font-bold text-foreground text-[14px] text-left"
+                        >root.404</td
+                    >
+                    <td>NULL POINTERS</td>
+                    <td class="font-bold text-foreground text-[12px] text-right"
+                        >12.480</td
+                    >
+                    <td class="group-hover:text-accent">↑ 2</td>
+                </tr>
+
+                <tr
+                    class="text-center text-xs font-mono tracking-widest text-muted-foreground group hover:bg-accent/30 transition-all border-b border-border"
+                >
+                    <td class="py-4 group-hover:text-accent">02</td>
+                    <td class="font-bold text-foreground text-[14px] text-left"
+                        >n0cturnal</td
+                    >
+                    <td>GH0ST DIVISION</td>
+                    <td class="font-bold text-foreground text-[12px] text-right"
+                        >11.920</td
+                    >
+                    <td class="group-hover:text-accent">↑ 1</td>
+                </tr>
+
+                <tr
+                    class="text-center text-xs font-mono tracking-widest text-muted-foreground group hover:bg-accent/30 transition-all border-b border-border"
+                >
+                    <td class="py-4 group-hover:text-accent">02</td>
+                    <td class="font-bold text-foreground text-[14px] text-left"
+                        >shellshock</td
+                    >
+                    <td>DARK ARMY</td>
+                    <td class="font-bold text-foreground text-[12px] text-right"
+                        >10.875</td
+                    >
+                    <td class="group-hover:text-accent">--</td>
+                </tr>
+
+                <tr
+                    class="text-center text-xs font-mono tracking-widest text-muted-foreground group hover:bg-accent/30 transition-all border-b border-border"
+                >
+                    <td class="py-4 group-hover:text-accent">02</td>
+                    <td class="font-bold text-foreground text-[14px] text-left"
+                        >kronno</td
+                    >
+                    <td>BYTE RAIDERS</td>
+                    <td class="font-bold text-foreground text-[12px] text-right"
+                        >9.640</td
+                    >
+                    <td class="group-hover:text-accent">↑ 4</td>
+                </tr>
+
+                <tr
+                    class="text-center text-xs font-mono tracking-widest text-muted-foreground group hover:bg-accent/30 transition-all border-b border-border"
+                >
+                    <td class="py-4 group-hover:text-accent">02</td>
+                    <td class="font-bold text-foreground text-[14px] text-left"
+                        >nullbyte</td
+                    >
+                    <td>INDEPENDIENTE</td>
+                    <td class="font-bold text-foreground text-[12px] text-right"
+                        >8.210</td
+                    >
+                    <td class="group-hover:text-accent">↓ 1</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div
+            class="text-xs font-mono tracking-widest flex justify-between items-center"
+        >
+            <p class="text-muted-foreground">
+                RANKING GLOBAL // TEMPORADA 2026
+            </p>
+
+            <a
+                href="/"
+                class="flex items-center justify-center gap-3 cursor-pointer hover:text-accent hover:scale-102 transition-all"
+            >
+                VER CLASIFICACIÓN COMPLETA
+                <ChevronRightIcon size={15} />
+            </a>
+        </div>
+    </div>
+</section>
