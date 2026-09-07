@@ -1,0 +1,119 @@
+---
+import {
+    CrosshairIcon,
+    ShieldIcon,
+    NetworkIcon,
+    TrophyIcon,
+    ArrowUpRightIcon,
+    ChevronRightIcon,
+} from "@lucide/astro";
+import ModoDeJuego from "./ModoDeJuego.astro";
+import Desafio from "./Desafio.astro";
+---
+
+<section id="compite" class="mx-15 py-30 space-y-15 border-b border-border">
+    <div class="flex justify-between items-center">
+        <div class="space-y-5">
+            <p class="text-accent font-mono text-xs tracking-widest">
+                03 / DOS FORMAS DE JUGAR
+            </p>
+
+            <h2 class="text-6xl font-mono font-bold">
+                ELIGE TU VECTOR
+                <span class="block">DE <b class="text-accent">ATAQUE</b></span>
+            </h2>
+        </div>
+
+        <p class="w-85 text-muted-foreground">
+            ¿Crees que tienes las habilidades suficientes para ganar el duelo?
+            Demuestralo.
+        </p>
+    </div>
+
+    <div class="flex justify-between">
+        <ModoDeJuego
+            Icono={CrosshairIcon}
+            numero="001"
+            titulo="CTF / UN SISTEMA. LAS MISMAS FLAGS."
+            subtitulo="CAPTURA LA BANDERA"
+            descripcion="Todos los jugadores entran al mismo sistema y persiguen las mismas flags. Encuentra la ruta, encadena vulnerabilidades y captura la bandera dorada antes que nadie."
+        />
+
+        <ModoDeJuego
+            Icono={ShieldIcon}
+            numero="002"
+            titulo="GUERRA DE SISTEMAS"
+            subtitulo="ATAQUE Y DEFENSA"
+            descripcion="Ataca su sistema. Defiende el tuyo. Enfréntate a otros equipos sobre la misma arquitectura y sobrevive a un torneo donde cada decisión puede cambiar el marcador."
+        />
+    </div>
+
+    <div class="flex justify-between">
+        <article
+            class="p-8 border border-border bg-card flex flex-col justify-between gap-10 flex-2"
+        >
+            <div class="flex items-center justify-between">
+                <p class="text-accent text-xs font-mono tracking-widest">
+                    // VULNERABILIDADES DETECTADAS
+                </p>
+                <NetworkIcon class="text-muted-foreground" />
+            </div>
+
+            <div>
+                <Desafio
+                    icono="⌁"
+                    titulo="zero_day"
+                    tipo="PWN"
+                    puntos="900"
+                    estado="ABIERTO"
+                />
+
+                <Desafio
+                    icono="◉"
+                    titulo="black_ice"
+                    tipo="FORENSE"
+                    puntos="750"
+                    estado="ABIERTO"
+                />
+
+                <Desafio
+                    icono="◈"
+                    titulo="ghost_protocol"
+                    tipo="CRIPTOGRAFÍA"
+                    puntos="500"
+                    estado="NUEVO"
+                />
+            </div>
+
+            <a
+                class="flex items-center gap-2 text-xs font-mono tracking-widest cursor-pointer hover:text-accent hover:scale-105 hover:translate-x-10 transition-all"
+            >
+                VER TODOS LOS DESAFÍOS
+                <ChevronRightIcon size={15} />
+            </a>
+        </article>
+
+        <article
+            class="flex-1 p-8 bg-accent flex flex-col justify-between gap-10"
+        >
+            <TrophyIcon class="text-background" />
+
+            <div class="border-b border-border flex-1 space-y-3">
+                <h2 class="font-mono font-bold text-2xl text-background">
+                    TU PRIMER EXPLOIT EMPIEZA AQUÍ
+                </h2>
+                <p class="text-secondary text-sm">
+                    Únete a una comunidad que comparte conocimiento, construye
+                    herramientas y compite con propósito.
+                </p>
+            </div>
+
+            <div
+                class="flex justify-between items-center text-background font-mono tracking-widest text-xs font-bold cursor-pointer"
+            >
+                <a>SOLICITAR ACCESO</a>
+                <ArrowUpRightIcon size={15} />
+            </div>
+        </article>
+    </div>
+</section>
