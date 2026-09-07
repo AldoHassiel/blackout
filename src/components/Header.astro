@@ -42,6 +42,20 @@ import { Terminal } from "@lucide/astro";
             ></span>
             <span class="hover:text-gray-300">EN VIVO</span>
         </a>
+
+        <span>|</span>
+
+        <div class="space-x-3">
+            <button
+                id="btn-tema-rojo"
+                class="h-2 w-2 rounded-full bg-[#c8472d] ring-2 ring-accent ring-offset-2 ring-offset-background cursor-pointer"
+            ></button>
+
+            <button
+                id="btn-tema-verde"
+                class="h-2 w-2 rounded-full bg-[#74d99b] ring-accent ring-offset-2 ring-offset-background cursor-pointer"
+            ></button>
+        </div>
     </nav>
 
     <button
@@ -49,3 +63,25 @@ import { Terminal } from "@lucide/astro";
         >UNIRSE A BLACKOUT</button
     >
 </header>
+
+<script>
+    const $root = document.getElementById("root");
+    const $btnTemaRojo = document.getElementById("btn-tema-rojo");
+    const $btnTemaVerde = document.getElementById("btn-tema-verde");
+
+    $btnTemaRojo?.addEventListener("click", () => {
+        $root?.classList.remove("theme-green");
+        $root?.classList.add("theme-red");
+
+        $btnTemaVerde?.classList.remove("ring-2");
+        $btnTemaRojo?.classList.add("ring-2");
+    });
+
+    $btnTemaVerde?.addEventListener("click", () => {
+        $root?.classList.remove("theme-red");
+        $root?.classList.add("theme-green");
+
+        $btnTemaRojo?.classList.remove("ring-2");
+        $btnTemaVerde?.classList.add("ring-2");
+    });
+</script>
