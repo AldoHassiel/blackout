@@ -1,17 +1,84 @@
 @import "tailwindcss";
 
 @theme inline {
-    --font-sans: 'Geist Variable', sans-serif;
-    --font-mono: 'IBM Plex Mono', monospace;
+    --font-sans: "Geist Variable", sans-serif;
+    --font-mono: "IBM Plex Mono", monospace;
+
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+
+    --color-card: var(--card);
+    --color-card-foreground: var(--card-foreground);
+
+    --color-primary: var(--primary);
+    --color-primary-foreground: var(--primary-foreground);
+
+    --color-secondary: var(--secondary);
+    --color-secondary-foreground: var(--secondary-foreground);
+
+    --color-muted: var(--muted);
+    --color-muted-foreground: var(--muted-foreground);
+
+    --color-accent: var(--accent);
+
+    --color-border: var(--border);
+    --color-input: var(--input);
+    --color-ring: var(--ring);
 }
 
-@theme {
-    --color-gris: #57675c;
-    --color-parrafos: #6d8073;
-    --color-verde-brillante: #02af65;
-    --color-enfasis: #02d67c;
+:root,
+.theme-green {
+    --background: oklch(0.095 0.012 160);
+    --foreground: oklch(0.93 0.018 150);
+
+    --card: oklch(0.12 0.014 158);
+    --card-foreground: oklch(0.93 0.018 150);
+
+    --primary: oklch(0.77 0.19 155);
+    --primary-foreground: oklch(0.1 0.015 160);
+
+    --secondary: oklch(0.16 0.018 160);
+    --secondary-foreground: oklch(0.85 0.02 150);
+
+    --muted: oklch(0.16 0.018 160);
+    --muted-foreground: oklch(0.58 0.03 155);
+
+    --accent: oklch(0.77 0.19 155);
+
+    --border: oklch(0.27 0.03 157);
+    --input: oklch(0.22 0.025 157);
+    --ring: oklch(0.77 0.19 155);
+}
+
+.theme-red {
+    --background: oklch(0.075 0.008 25);
+    --foreground: oklch(0.91 0.012 85);
+
+    --card: oklch(0.105 0.01 25);
+    --card-foreground: oklch(0.91 0.012 85);
+
+    --primary: oklch(0.62 0.19 27);
+    --primary-foreground: oklch(0.97 0.01 85);
+
+    --secondary: oklch(0.14 0.012 25);
+    --secondary-foreground: oklch(0.82 0.012 85);
+
+    --muted: oklch(0.14 0.012 25);
+    --muted-foreground: oklch(0.56 0.018 35);
+
+    --accent: oklch(0.62 0.19 27);
+
+    --border: oklch(0.25 0.018 28);
+    --input: oklch(0.2 0.014 28);
+    --ring: oklch(0.62 0.19 27);
 }
 
 body {
     font-family: var(--font-sans);
+    background: var(--background);
+    color: var(--foreground);
+}
+
+::selection {
+    background: color-mix(in oklab, var(--accent) 30%, transparent);
 }
