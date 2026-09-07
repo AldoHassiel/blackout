@@ -6,10 +6,9 @@ import ProximoEvento from "./ProximoEvento.astro";
 <section class="flex flex-wrap mx-15 my-10">
     <div class="flex-2 flex flex-col gap-4">
         <span
-            class="flex items-center gap-2 w-fit border border-[#024a2b] bg-[#010f08] px-2 py-1 text-emerald-500 text-[12px] tracking-[0.11em] font-mono"
+            class="flex items-center gap-2 w-fit border border-accent bg-card px-2 py-1 text-accent text-[12px] tracking-[0.11em] font-mono"
         >
-            <span
-                class="block w-2 h-2 rounded-full bg-emerald-600 animate-pulse"
+            <span class="block w-1 h-1 rounded-full bg-accent animate-ping"
             ></span>
             SISTEMA ONLINE / SECTOR 07
         </span>
@@ -18,26 +17,28 @@ import ProximoEvento from "./ProximoEvento.astro";
             class="text-[110px] leading-none font-mono font-bold tracking-[-0.38rem]"
         >
             EL SISTEMA
-            <span class="block text-[#02a45f]">TE OBSERVA</span>
+            <span class="block text-accent">TE OBSERVA</span>
         </h1>
 
-        <p class="text-parrafos text-lg max-w-xl">
+        <p class="text-muted-foreground text-lg max-w-xl">
             BLACKOUT es la comunidad de quienes convierten la curiosidad en
             capacidad. Practicamos hacking ético, compartimos conocimiento y
             competimos para descubrir hasta dónde puede llegar nuestra mente.
         </p>
-        <em class="text-parrafos">Aprende. Ataca. Defiente. Deja tu marca.</em>
+        <em class="text-muted-foreground tracking-widest"
+            >Demuestra que ningún sistema es seguro.</em
+        >
 
         <div class="flex gap-5 font-mono">
             <a
                 href="#modalidades"
-                class="flex items-center gap-2 bg-[#02d67c] text-black font-bold px-4 py-3 text-[10px] tracking-[0.20em] hover:bg-white transition-all cursor-pointer"
+                class="flex items-center gap-2 bg-accent text-black font-bold px-4 py-3 text-[10px] tracking-[0.20em] hover:bg-white transition-all cursor-pointer"
                 >ENTRAR EN LA OPERACIÓN
                 <ArrowDownRight size={15} />
             </a>
             <a
                 href="#comunidad"
-                class="border border-[#1a2b21] px-4 py-3 text-[10px] tracking-[0.20em] text-parrafos hover:border-white hover:text-white cursor-pointer transition-all"
+                class="border border-border px-4 py-3 text-[10px] tracking-[0.20em] text-muted-foreground hover:border-white hover:text-white cursor-pointer transition-all"
                 >CONOCER LA COMUNIDAD</a
             >
         </div>
