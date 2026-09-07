@@ -1,0 +1,50 @@
+---
+import { LockKeyholeIcon, TerminalIcon, HatGlassesIcon } from "@lucide/astro";
+import Curso from "./Curso.astro";
+---
+
+<section class="mx-15 space-y-15 py-10 border-y border-border">
+    <div class="flex justify-between items-center">
+        <div class="space-y-5">
+            <p class="text-accent font-mono text-xs tracking-widest">
+                02 / ACADEMIA BLACKOUT
+            </p>
+            <h2 class="text-6xl font-mono font-bold">
+                CADA <b class="text-accent">FLAG</b> ABRE
+                <span class="block"
+                    >UNA NUEVA <b class="text-accent">PUERTA</b></span
+                >
+            </h2>
+        </div>
+
+        <div>
+            <p class="w-100 text-muted-foreground">
+                Lecciones prácticas, laboratorios reales y una comunidad que no
+                guarda secretos.
+            </p>
+        </div>
+    </div>
+
+    <div class="flex justify-between">
+        <Curso
+            Icono={LockKeyholeIcon}
+            nivel="NIVEL 01 / FUNDAMENTOS"
+            titulo="PIENSA COMO UN ATACANTE"
+            descripcion="Reconocimiento, superficies de ataque y la lógica detrás de cada vulnerabilidad."
+        />
+
+        <Curso
+            Icono={TerminalIcon}
+            nivel="NIVEL 02 / OPERATIVO"
+            titulo="ROMPE EL SISTEMA"
+            descripcion="Practica explotación , escalada de privilegios y análisis en entornos controlados."
+        />
+
+        <Curso
+            Icono={HatGlassesIcon}
+            nivel="NIVEL 03 / AVANZADO"
+            titulo="DEJA CERO RASTROS"
+            descripcion="Reconocimiento, superficies de ataque y la lógica detrás de cada vulnerabilidad."
+        />
+    </div>
+</section>

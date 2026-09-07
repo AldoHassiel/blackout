@@ -1,0 +1,40 @@
+---
+import { ChevronRightIcon } from "@lucide/astro";
+
+export interface Props {
+    Icono: typeof ChevronRightIcon;
+    nivel: string;
+    titulo: string;
+    descripcion: string;
+}
+
+const { Icono, nivel, titulo, descripcion } = Astro.props;
+---
+
+<article
+    class="border border-border bg-card w-fit p-8 flex flex-col justify-between gap-8 group cursor-pointer hover:bg-accent hover:scale-105 transition-all duration-400"
+>
+    <Icono class="text-primary group-hover:text-muted" />
+
+    <div class="space-y-1">
+        <p
+            class="font-mono text-[10px] tracking-widest text-accent group-hover:text-secondary"
+        >
+            {nivel}
+        </p>
+        <h3 class="font-mono font-bold text-xl group-hover:text-muted">
+            {titulo}
+        </h3>
+        <p class="text-[14px] text-muted-foreground group-hover:text-secondary">
+            {descripcion}
+        </p>
+    </div>
+
+    <a
+        href="/"
+        class="flex items-center font-mono text-xs tracking-widest group-hover:text-secondary"
+    >
+        ABRIR LECCIÓN
+        <ChevronRightIcon size={15} />
+    </a>
+</article>
