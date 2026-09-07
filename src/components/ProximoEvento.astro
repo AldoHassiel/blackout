@@ -85,7 +85,8 @@ const segundos = "56";
 
         $horas.textContent = horas.toString().padStart(2, "0");
         $minutos.textContent = minutos.toString().padStart(2, "0");
-        $segundos.textContent = segundos.toString().padStart(2, "0");
+        $segundos.textContent =
+            segundos == -1 ? "00" : segundos.toString().padStart(2, "0");
 
         if (horas == 0 && minutos == 0 && segundos == 0) {
             clearInterval(temporizador);
@@ -96,7 +97,7 @@ const segundos = "56";
         }
 
         if (segundos < 0) {
-            segundos = 59;
+            segundos = 60;
             minutos--;
         }
 
