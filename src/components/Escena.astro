@@ -1,0 +1,41 @@
+---
+import eventoSmall from "../assets/blackout/evento-360.webp";
+import eventoMedium from "../assets/blackout/evento-720.webp";
+import eventoLarge from "../assets/blackout/evento-1280.webp";
+import academiaSmall from "../assets/blackout/academia-360.webp";
+import academiaMedium from "../assets/blackout/academia-720.webp";
+import academiaLarge from "../assets/blackout/academia-1280.webp";
+import comunidadSmall from "../assets/blackout/comunidad-360.webp";
+import comunidadMedium from "../assets/blackout/comunidad-720.webp";
+import comunidadLarge from "../assets/blackout/comunidad-1280.webp";
+
+const escenas = {
+    evento: [eventoSmall, eventoMedium, eventoLarge],
+    academia: [academiaSmall, academiaMedium, academiaLarge],
+    comunidad: [comunidadSmall, comunidadMedium, comunidadLarge],
+};
+
+interface Props {
+    escena: keyof typeof escenas;
+    alt: string;
+    sizes: string;
+    class?: string;
+    eager?: boolean;
+}
+
+const { escena, alt, sizes, class: className, eager = false } = Astro.props;
+const imagenes = escenas[escena];
+const imagen = imagenes[2];
+---
+
+<img
+    src={imagen.src}
+    srcset={imagenes.map((image) => `${image.src} ${image.width}w`).join(", ")}
+    width={imagen.width}
+    height={imagen.height}
+    sizes={sizes}
+    alt={alt}
+    loading={eager ? "eager" : "lazy"}
+    decoding="async"
+    class:list={["block w-full object-cover", className]}
+/>

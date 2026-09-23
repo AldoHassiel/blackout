@@ -1,5 +1,6 @@
 ---
 import { RadioIcon } from "@lucide/astro";
+import Escena from "./Escena.astro";
 
 const fecha = new Date();
 const dia = fecha.getDate().toString().padStart(2, "0");
@@ -13,10 +14,10 @@ const segundos = "56";
 
 <article
     id="en-vivo"
-    class="min-w-0 flex-1 border border-border px-4 bg-card flex flex-col justify-between gap-6 cursor-pointer transition-all sm:px-6 xl:my-10 xl:gap-0 xl:hover:scale-105"
+    class="min-w-0 flex-1 overflow-hidden border border-border bg-card flex flex-col"
 >
-    <div class="flex justify-between items-center border-b border-b-border">
-        <div class="flex items-center gap-2 text-[11px] py-6">
+    <div class="flex justify-between items-center gap-3 border-b border-b-border px-4 sm:px-6">
+        <div class="flex items-center gap-2 text-[11px] py-4">
             <RadioIcon class="text-accent animate-pulse" size={19} />
             <p class="text-muted-foreground tracking-[0.15em]">
                 PRÓXIMA OPERACIÓN
@@ -26,7 +27,20 @@ const segundos = "56";
         <p class="text-[11px] text-accent tracking-[0.15em]">LIVE</p>
     </div>
 
-    <div class="flex flex-col gap-2">
+    <figure class="relative overflow-hidden border-b border-border">
+        <Escena
+            escena="evento"
+            alt="Ilustración de la apertura de una conferencia de ciberseguridad, con un ponente frente a los asistentes."
+            sizes="(min-width: 1280px) 33vw, (min-width: 1024px) calc(100vw - 120px), (min-width: 640px) calc(100vw - 64px), calc(100vw - 32px)"
+            class="aspect-[16/7] object-center"
+            eager
+        />
+        <figcaption class="absolute inset-x-0 bottom-0 bg-linear-to-t from-black/90 to-transparent px-4 pb-3 pt-8 font-mono text-[9px] tracking-widest text-white sm:px-6">
+            COMPITE. APRENDE. CONECTA.
+        </figcaption>
+    </figure>
+
+    <div class="flex flex-1 flex-col gap-2 px-4 py-5 sm:px-6">
         <p class="text-accent font-mono text-xs tracking-widest">
             BLACKOUT // CTF 001
         </p>
@@ -63,7 +77,7 @@ const segundos = "56";
         </div>
     </div>
 
-    <div class="flex justify-between text-[11px] py-6 border-t border-t-border">
+    <div class="flex justify-between gap-3 text-[11px] px-4 py-4 border-t border-t-border sm:px-6">
         <p class="text-muted-foreground">64 EQUIPOS INSCRITOS</p>
         <p>{dia}.{mes}.{año}</p>
     </div>

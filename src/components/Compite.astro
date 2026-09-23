@@ -9,11 +9,12 @@ import {
 } from "@lucide/astro";
 import ModoDeJuego from "./ModoDeJuego.astro";
 import Desafio from "./Desafio.astro";
+import Duelo from "./Duelo.astro";
 ---
 
 <section
     id="compite"
-    class="mx-4 py-16 space-y-8 sm:mx-8 sm:py-20 sm:space-y-10 lg:mx-15 lg:py-30 lg:space-y-15 border-b border-border timeline-view animate-blurred-fade-in animate-range-[entry_10%_entry_100%] lg:animate-range-[entry_10%_contain_30%]"
+    class="mx-4 py-16 space-y-8 sm:mx-8 sm:py-20 sm:space-y-10 lg:mx-15 lg:py-30 lg:space-y-15 border-b border-border timeline-view animate-blurred-fade-in animate-range-[entry_10%_entry_100%]"
 >
     <div class="flex flex-col gap-6 items-start xl:flex-row xl:justify-between xl:items-center">
         <div class="min-w-0 space-y-5">
@@ -33,7 +34,9 @@ import Desafio from "./Desafio.astro";
         </p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2">
+    <Duelo />
+
+    <div id="modalidades" class="grid scroll-mt-6 grid-cols-1 md:grid-cols-2">
         <ModoDeJuego
             Icono={CrosshairIcon}
             numero="001"
