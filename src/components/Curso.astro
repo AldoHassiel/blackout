@@ -12,7 +12,7 @@ const { Icono, nivel, titulo, descripcion } = Astro.props;
 ---
 
 <article
-    class="border border-border bg-card w-fit p-8 flex flex-col justify-between gap-8 group cursor-pointer hover:bg-accent hover:scale-105 transition-all duration-400"
+    class="min-w-0 border border-border bg-card p-6 xl:p-8 flex flex-col justify-between gap-8 group cursor-pointer hover:bg-accent xl:hover:scale-105 transition-all duration-400"
 >
     <Icono class="text-primary group-hover:text-muted" />
 
@@ -32,7 +32,7 @@ const { Icono, nivel, titulo, descripcion } = Astro.props;
 
     <a
         href="/"
-        class="flex items-center font-mono text-xs tracking-widest group-hover:text-secondary"
+        class="flex min-h-11 items-center font-mono text-xs tracking-widest group-hover:text-secondary xl:min-h-0"
     >
         ABRIR LECCIÓN
         <ChevronRightIcon size={15} />

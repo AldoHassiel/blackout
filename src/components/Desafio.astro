@@ -16,12 +16,12 @@ export interface Props {
 const { icono, titulo, tipo, puntos, estado } = Astro.props;
 ---
 
-<div class="border-b border-border flex justify-between items-center py-2">
-    <div class="flex items-center justify-center gap-5">
+<div class="border-b border-border flex flex-col items-stretch gap-3 py-4 sm:flex-row sm:justify-between sm:items-center sm:py-2">
+    <div class="min-w-0 flex items-center gap-3 sm:gap-5">
         <p class="text-xl text-accent">{icono}</p>
 
-        <div>
-            <p class="text-sm font-mono">{titulo}</p>
+        <div class="min-w-0">
+            <p class="text-sm font-mono wrap-anywhere">{titulo}</p>
             <p
                 class="text-[10px] font-mono tracking-widest text-muted-foreground"
             >
@@ -30,7 +30,7 @@ const { icono, titulo, tipo, puntos, estado } = Astro.props;
         </div>
     </div>
 
-    <div class="flex items-center text-xs font-mono gap-5">
+    <div class="flex shrink-0 justify-between items-center text-xs font-mono gap-5 sm:justify-start">
         <p class="text-muted-foreground">{puntos} pts</p>
         <p class="text-accent">{estado}</p>
     </div>

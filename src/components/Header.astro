@@ -1,13 +1,13 @@
 ---
-import { Terminal } from "@lucide/astro";
+import { Menu, Terminal, X } from "@lucide/astro";
 ---
 
 <header
-    class="flex justify-between items-center mx-5 px-10 py-5 border-b border-border animate-blurred-fade-in"
+    class="grid grid-cols-[1fr_auto] items-center gap-x-4 mx-4 py-4 border-b border-border animate-blurred-fade-in sm:mx-8 xl:mx-5 xl:flex xl:justify-between xl:px-10 xl:py-5"
 >
     <a
         href="/"
-        class="flex items-center gap-3 font-mono text-lg font-bold tracking-[0.25em]"
+        class="flex w-fit items-center gap-2 font-mono text-base font-bold tracking-[0.25em] sm:gap-3 sm:text-lg"
     >
         <span class="border border-accent text-accent p-1">
             <Terminal size="15" />
@@ -16,50 +16,75 @@ import { Terminal } from "@lucide/astro";
         <span class="text-accent">_</span>
     </a>
 
-    <nav
-        class="flex justify-center items-center gap-5 text-[10px] text-gris tracking-[0.18em]"
+    <button
+        id="menu-toggle"
+        type="button"
+        aria-label="Abrir menú de navegación"
+        aria-controls="main-navigation"
+        aria-expanded="false"
+        class="group flex size-11 items-center justify-center border border-border text-accent cursor-pointer xl:hidden"
     >
-        <a href="#nosotros" class="hover:text-accent transition-colors"
+        <Menu size={20} class="group-aria-expanded:hidden" />
+        <X size={20} class="hidden group-aria-expanded:block" />
+    </button>
+
+    <nav
+        id="main-navigation"
+        aria-label="Navegación principal"
+        class="hidden col-span-2 flex-col items-stretch gap-2 border-t border-border mt-4 pt-4 text-[10px] text-gris tracking-[0.18em] xl:mt-0 xl:flex xl:flex-row xl:justify-center xl:items-center xl:gap-5 xl:border-0 xl:pt-0"
+    >
+        <a href="#nosotros" class="flex min-h-11 items-center hover:text-accent transition-colors xl:min-h-0"
             >NOSOTROS</a
         >
-        <a href="#aprende" class="hover:text-accent transition-colors"
+        <a href="#aprende" class="flex min-h-11 items-center hover:text-accent transition-colors xl:min-h-0"
             >APRENDE</a
         >
-        <a href="#compite" class="hover:text-accent transition-colors"
+        <a href="#compite" class="flex min-h-11 items-center hover:text-accent transition-colors xl:min-h-0"
             >COMPITE</a
         >
-        <a href="#ranking" class="hover:text-accent transition-colors"
+        <a href="#ranking" class="flex min-h-11 items-center hover:text-accent transition-colors xl:min-h-0"
             >RANKING</a
         >
 
-        <span>|</span>
+        <span aria-hidden="true" class="hidden xl:inline">|</span>
 
         <a
             href="#en-vivo"
-            class="flex gap-2 justify-center items-center text-accent"
+            class="flex min-h-11 gap-2 items-center text-accent xl:min-h-0 xl:justify-center"
         >
             <span class="block w-2 h-2 bg-accent rounded-full animate-pulse"
             ></span>
             <span class="hover:text-gray-300">EN VIVO</span>
         </a>
 
-        <span>|</span>
+        <span aria-hidden="true" class="hidden xl:inline">|</span>
 
-        <div class="space-x-3">
+        <div class="flex items-center gap-3" role="group" aria-label="Tema de color">
             <button
                 id="btn-tema-rojo"
-                class="h-2 w-2 rounded-full bg-[#c8472d] ring-2 ring-accent ring-offset-2 ring-offset-background cursor-pointer"
-            ></button>
+                type="button"
+                aria-label="Usar tema rojo"
+                aria-pressed="true"
+                class="group flex size-11 items-center justify-center cursor-pointer xl:size-3"
+            ><span class="size-2 rounded-full bg-[#c8472d] ring-accent ring-offset-2 ring-offset-background group-aria-pressed:ring-2"></span></button>
 
             <button
                 id="btn-tema-verde"
-                class="h-2 w-2 rounded-full bg-[#74d99b] ring-accent ring-offset-2 ring-offset-background cursor-pointer"
-            ></button>
+                type="button"
+                aria-label="Usar tema verde"
+                aria-pressed="false"
+                class="group flex size-11 items-center justify-center cursor-pointer xl:size-3"
+            ><span class="size-2 rounded-full bg-[#74d99b] ring-accent ring-offset-2 ring-offset-background group-aria-pressed:ring-2"></span></button>
         </div>
+
+        <button
+            type="button"
+            class="min-h-11 border border-accent font-mono text-accent px-4 py-3 text-[10px] tracking-[0.2em] cursor-pointer hover:bg-accent hover:text-black transition-colors xl:hidden"
+        >UNIRSE A BLACKOUT</button>
     </nav>
 
     <button
-        class="border border-accent font-mono text-accent px-4 py-2 text-[10px] tracking-[0.2em] cursor-pointer hover:bg-accent hover:text-black transition-colors"
+        class="hidden xl:block border border-accent font-mono text-accent px-4 py-2 text-[10px] tracking-[0.2em] cursor-pointer hover:bg-accent hover:text-black transition-colors"
         >UNIRSE A BLACKOUT</button
     >
 </header>
@@ -73,15 +98,48 @@ import { Terminal } from "@lucide/astro";
         $root?.classList.remove("theme-green");
         $root?.classList.add("theme-red");
 
-        $btnTemaVerde?.classList.remove("ring-2");
-        $btnTemaRojo?.classList.add("ring-2");
+        $btnTemaVerde?.setAttribute("aria-pressed", "false");
+        $btnTemaRojo?.setAttribute("aria-pressed", "true");
     });
 
     $btnTemaVerde?.addEventListener("click", () => {
         $root?.classList.remove("theme-red");
         $root?.classList.add("theme-green");
 
-        $btnTemaRojo?.classList.remove("ring-2");
-        $btnTemaVerde?.classList.add("ring-2");
+        $btnTemaRojo?.setAttribute("aria-pressed", "false");
+        $btnTemaVerde?.setAttribute("aria-pressed", "true");
     });
+
+    const menuToggle = document.getElementById("menu-toggle");
+    const navigation = document.getElementById("main-navigation");
+
+    function setMenuOpen(open: boolean) {
+        menuToggle?.setAttribute("aria-expanded", String(open));
+        menuToggle?.setAttribute("aria-label", open ? "Cerrar menú de navegación" : "Abrir menú de navegación");
+        navigation?.classList.toggle("hidden", !open);
+        navigation?.classList.toggle("flex", open);
+    }
+
+    menuToggle?.addEventListener("click", () => {
+        setMenuOpen(menuToggle.getAttribute("aria-expanded") !== "true");
+    });
+
+    navigation?.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => setMenuOpen(false));
+    });
+
+    document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && menuToggle?.getAttribute("aria-expanded") === "true") {
+            setMenuOpen(false);
+            menuToggle.focus();
+        }
+    });
+
+    document.addEventListener("click", (event) => {
+        if (event.target instanceof Node && !menuToggle?.closest("header")?.contains(event.target)) {
+            setMenuOpen(false);
+        }
+    });
+
+    window.matchMedia("(min-width: 80rem)").addEventListener("change", () => setMenuOpen(false));
 </script>

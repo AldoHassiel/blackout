@@ -13,27 +13,27 @@ import Desafio from "./Desafio.astro";
 
 <section
     id="compite"
-    class="mx-15 py-30 space-y-15 border-b border-border timeline-view animate-blurred-fade-in animate-range-[entry_10%_contain_30%]"
+    class="mx-4 py-16 space-y-8 sm:mx-8 sm:py-20 sm:space-y-10 lg:mx-15 lg:py-30 lg:space-y-15 border-b border-border timeline-view animate-blurred-fade-in animate-range-[entry_10%_entry_100%] lg:animate-range-[entry_10%_contain_30%]"
 >
-    <div class="flex justify-between items-center">
-        <div class="space-y-5">
+    <div class="flex flex-col gap-6 items-start xl:flex-row xl:justify-between xl:items-center">
+        <div class="min-w-0 space-y-5">
             <p class="text-accent font-mono text-xs tracking-widest">
                 03 / DOS FORMAS DE JUGAR
             </p>
 
-            <h2 class="text-6xl font-mono font-bold">
+            <h2 class="text-3xl sm:text-5xl xl:text-6xl font-mono font-bold">
                 ELIGE TU VECTOR
                 <span class="block">DE <b class="text-accent">ATAQUE</b></span>
             </h2>
         </div>
 
-        <p class="w-85 text-muted-foreground">
+        <p class="max-w-85 text-muted-foreground xl:w-85">
             ¿Crees que tienes las habilidades suficientes para ganar el duelo?
             Demuestralo.
         </p>
     </div>
 
-    <div class="flex justify-between">
+    <div class="grid grid-cols-1 md:grid-cols-2">
         <ModoDeJuego
             Icono={CrosshairIcon}
             numero="001"
@@ -51,15 +51,15 @@ import Desafio from "./Desafio.astro";
         />
     </div>
 
-    <div class="flex justify-between">
+    <div class="flex flex-col lg:flex-row">
         <article
-            class="p-8 border border-border bg-card flex flex-col justify-between gap-10 flex-2"
+            class="min-w-0 p-4 sm:p-8 border border-border bg-card flex flex-col justify-between gap-8 sm:gap-10 flex-2"
         >
-            <div class="flex items-center justify-between">
+            <div class="flex items-center justify-between gap-3">
                 <p class="text-accent text-xs font-mono tracking-widest">
                     // VULNERABILIDADES DETECTADAS
                 </p>
-                <NetworkIcon class="text-muted-foreground" />
+                <NetworkIcon class="shrink-0 text-muted-foreground" />
             </div>
 
             <div>
@@ -90,7 +90,7 @@ import Desafio from "./Desafio.astro";
 
             <a
                 href="/"
-                class="flex items-center gap-2 text-xs font-mono tracking-widest cursor-pointer hover:text-accent hover:scale-105 hover:translate-x-10 transition-all"
+                class="flex min-h-11 items-center gap-2 text-xs font-mono tracking-widest cursor-pointer hover:text-accent xl:min-h-0 xl:hover:scale-105 xl:hover:translate-x-10 transition-all"
             >
                 VER TODOS LOS DESAFÍOS
                 <ChevronRightIcon size={15} />
@@ -98,11 +98,11 @@ import Desafio from "./Desafio.astro";
         </article>
 
         <article
-            class="flex-1 p-8 bg-accent flex flex-col justify-between gap-10"
+            class="min-w-0 flex-1 p-6 sm:p-8 bg-accent flex flex-col justify-between gap-10"
         >
             <TrophyIcon class="text-background" />
 
-            <div class="border-b border-border flex-1 space-y-3">
+            <div class="border-b border-border flex-1 space-y-3 pb-6 lg:pb-0">
                 <h2 class="font-mono font-bold text-2xl text-background">
                     TU PRIMER EXPLOIT EMPIEZA AQUÍ
                 </h2>
@@ -115,7 +115,7 @@ import Desafio from "./Desafio.astro";
             <div
                 class="flex justify-between items-center text-background font-mono tracking-widest text-xs font-bold cursor-pointer"
             >
-                <a href="/">SOLICITAR ACCESO</a>
+                <a href="/" class="flex min-h-11 items-center xl:min-h-0">SOLICITAR ACCESO</a>
                 <ArrowUpRightIcon size={15} />
             </div>
         </article>

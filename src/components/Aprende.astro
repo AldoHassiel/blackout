@@ -5,15 +5,15 @@ import Curso from "./Curso.astro";
 
 <section
     id="aprende"
-    class="mx-15 space-y-15 py-30 border-y border-border timeline-view animate-blurred-fade-in animate-range-[entry_10%_contain_30%]"
+    class="mx-4 space-y-8 py-16 sm:mx-8 sm:space-y-10 sm:py-20 lg:mx-15 lg:space-y-15 lg:py-30 border-y border-border timeline-view animate-blurred-fade-in animate-range-[entry_10%_entry_100%] lg:animate-range-[entry_10%_contain_30%]"
 >
-    <div class="flex justify-between items-center">
-        <div class="space-y-5">
+    <div class="flex flex-col gap-6 items-start xl:flex-row xl:justify-between xl:items-center">
+        <div class="min-w-0 space-y-5">
             <p class="text-accent font-mono text-xs tracking-widest">
                 02 / ACADEMIA BLACKOUT
             </p>
 
-            <h2 class="text-6xl font-mono font-bold">
+            <h2 class="text-3xl sm:text-5xl xl:text-6xl font-mono font-bold">
                 CADA <b class="text-accent">FLAG</b> ABRE
                 <span class="block"
                     >UNA NUEVA <b class="text-accent">PUERTA</b></span
@@ -22,14 +22,14 @@ import Curso from "./Curso.astro";
         </div>
 
         <div>
-            <p class="w-100 text-muted-foreground">
+            <p class="max-w-100 text-muted-foreground xl:w-100">
                 Lecciones prácticas, laboratorios reales y una comunidad que no
                 guarda secretos.
             </p>
         </div>
     </div>
 
-    <div class="flex justify-between">
+    <div class="grid grid-cols-1 md:grid-cols-3">
         <Curso
             Icono={LockKeyholeIcon}
             nivel="NIVEL 01 / FUNDAMENTOS"

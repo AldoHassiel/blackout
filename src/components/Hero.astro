@@ -3,10 +3,10 @@ import { ArrowDownRight } from "@lucide/astro";
 import ProximoEvento from "./ProximoEvento.astro";
 ---
 
-<section class="flex flex-wrap mx-15 my-10 animate-blurred-fade-in">
-    <div class="flex-2 flex flex-col gap-4">
+<section class="flex flex-col gap-8 mx-4 my-8 animate-blurred-fade-in sm:mx-8 sm:my-10 lg:mx-15 xl:flex-row xl:gap-0">
+    <div class="min-w-0 flex-2 flex flex-col gap-4">
         <span
-            class="flex items-center gap-2 w-fit border border-accent bg-card px-2 py-1 text-accent text-[12px] tracking-[0.11em] font-mono"
+            class="flex items-center gap-2 w-fit border border-accent bg-card px-2 py-1 text-accent text-[10px] tracking-[0.11em] font-mono sm:text-xs"
         >
             <span class="block w-1 h-1 rounded-full bg-accent animate-ping"
             ></span>
@@ -14,31 +14,31 @@ import ProximoEvento from "./ProximoEvento.astro";
         </span>
 
         <h1
-            class="text-[110px] leading-none font-mono font-bold tracking-[-0.38rem]"
+            class="text-[clamp(2.125rem,8vw,6.875rem)] leading-none font-mono font-bold tracking-[-0.055em] xl:text-[110px] xl:tracking-[-0.38rem]"
         >
             EL SISTEMA
             <span class="block text-accent">TE OBSERVA</span>
         </h1>
 
-        <p class="text-muted-foreground text-lg max-w-xl">
+        <p class="text-muted-foreground text-base sm:text-lg max-w-xl">
             BLACKOUT es la comunidad de quienes convierten la curiosidad en
             capacidad. Practicamos hacking ético, compartimos conocimiento y
             competimos para descubrir hasta dónde puede llegar nuestra mente.
         </p>
-        <em class="text-muted-foreground tracking-widest"
+        <em class="text-muted-foreground text-sm sm:text-base tracking-widest"
             >Demuestra que ningún sistema es seguro.</em
         >
 
-        <div class="flex gap-5 font-mono">
+        <div class="flex flex-col gap-3 font-mono sm:flex-row sm:flex-wrap sm:gap-5">
             <a
-                href="#modalidades"
-                class="flex items-center gap-2 bg-accent text-black font-bold px-4 py-3 text-[10px] tracking-[0.20em] hover:bg-white transition-all cursor-pointer"
+                href="#compite"
+                class="flex min-h-11 justify-center items-center gap-2 bg-accent text-black font-bold px-4 py-3 text-[10px] tracking-[0.20em] hover:bg-white transition-all cursor-pointer"
                 >ENTRAR EN LA OPERACIÓN
                 <ArrowDownRight size={15} />
             </a>
             <a
-                href="#comunidad"
-                class="border border-border px-4 py-3 text-[10px] tracking-[0.20em] text-muted-foreground hover:border-white hover:text-white cursor-pointer transition-all"
+                href="#nosotros"
+                class="flex min-h-11 items-center justify-center border border-border px-4 py-3 text-[10px] tracking-[0.20em] text-muted-foreground hover:border-white hover:text-white cursor-pointer transition-all"
                 >CONOCER LA COMUNIDAD</a
             >
         </div>
