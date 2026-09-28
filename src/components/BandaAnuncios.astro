@@ -1,0 +1,402 @@
+---
+import { ArrowUpRightIcon, XIcon } from "@lucide/astro";
+import laboratorio from "../assets/anuncios/laboratorios.webp";
+import conferencia from "../assets/anuncios/conferencia.webp";
+import torneo from "../assets/anuncios/torneo.webp";
+
+const anuncios = [
+    {
+        id: "labs",
+        categoria: "CYBERLAB // CURSO + LABORATORIOS",
+        titulo: "CURSO + 30 LABORATORIOS",
+        beneficio: "Aprende hacking ético. Ahorra $600.",
+        lugarFecha: "Online · 90 días de acceso",
+        precio: "$699", unidad: "MXN / pack",
+        accion: "VER OFERTA", imagen: laboratorio,
+        datos: [{ etiqueta: "Modalidad", valor: "Online" }, { etiqueta: "Acceso", valor: "90 días" }, { etiqueta: "Práctica", valor: "30 laboratorios aislados" }, { etiqueta: "Nivel", valor: "Desde cero" }],
+        encabezado: "Qué incluye",
+        incluye: ["Curso de hacking ético con ejercicios guiados", "Seguridad web y fundamentos de Linux", "Prácticas de escalada de privilegios"],
+        destacado: "Ahorras $600",
+        referencia: "Precio regular: $1,299 MXN",
+    },
+    {
+        id: "summit",
+        categoria: "ROOT ACCESS // CONFERENCIA PRESENCIAL",
+        titulo: "IA Y CIBERSEGURIDAD",
+        beneficio: "Con Valeria Cruz · Conferencia en vivo",
+        lugarFecha: "14 nov 2026 · C. Convenciones, Mazatlán",
+        precio: "$1,490", unidad: "MXN / boleto",
+        accion: "VER BOLETOS", imagen: conferencia,
+        datos: [{ etiqueta: "Fecha", valor: "14 de noviembre de 2026" }, { etiqueta: "Hora", valor: "10:00 h" }, { etiqueta: "Sede", valor: "Centro de Convenciones de Mazatlán" }, { etiqueta: "Ponente", valor: "Dra. Valeria Cruz" }],
+        encabezado: "Tu boleto incluye",
+        incluye: ["Keynote sobre IA y seguridad ofensiva", "Sesión de preguntas con la ponente", "Acceso presencial a la conferencia"],
+        destacado: "Boleto general",
+        referencia: "Precio por persona",
+    },
+    {
+        id: "ctf",
+        categoria: "BREACH CUP // TORNEO CTF ONLINE",
+        titulo: "CTF: GANA $75,000 MXN",
+        beneficio: "Premio al primer lugar · Equipos de 2–4",
+        lugarFecha: "Online · 7 nov 2026",
+        precio: "$299", unidad: "MXN / equipo",
+        accion: "VER INSCRIPCIÓN", imagen: torneo,
+        datos: [{ etiqueta: "Fecha", valor: "7 de noviembre de 2026" }, { etiqueta: "Modalidad", valor: "Online · 12 horas" }, { etiqueta: "Equipo", valor: "De 2 a 4 integrantes" }, { etiqueta: "Inscripción", valor: "$299 MXN por equipo" }],
+        encabezado: "Retos de la competencia",
+        incluye: ["Seguridad web", "Criptografía", "Análisis forense"],
+        destacado: "$75,000 MXN",
+        referencia: "Premio para el equipo que obtenga el primer lugar",
+    },
+];
+---
+
+<section class="banner" aria-label="Promociones: cursos, conferencia y torneo" aria-roledescription="carrusel" data-anuncios>
+    <div class="banner-window">
+        {anuncios.map((anuncio, index) => (
+            <article class="anuncio" hidden={index !== 0} data-slide role="group" aria-roledescription="diapositiva" aria-label={`${index + 1} de 3: ${anuncio.categoria}`}>
+                <div class:list={["anuncio-imagen", { retrato: anuncio.id === "summit" }]}>
+                    <img src={anuncio.imagen.src} alt="" width={anuncio.imagen.width} height={anuncio.imagen.height} decoding="async" />
+                </div>
+                <div class="anuncio-copy">
+                    <h2>{anuncio.titulo}</h2>
+                    <p class="beneficio">{anuncio.beneficio}</p>
+                    <p class="lugar-fecha">{anuncio.lugarFecha}</p>
+                </div>
+                <div class="oferta">
+                    <p class="precio">{anuncio.precio}<span>{anuncio.unidad}</span></p>
+                </div>
+                <div class="conversion">
+                    <button class="cta" type="button" data-open={anuncio.id} aria-haspopup="dialog" aria-controls={`oferta-${anuncio.id}`}>
+                        {anuncio.accion}<ArrowUpRightIcon size={17} aria-hidden="true" />
+                    </button>
+                </div>
+            </article>
+        ))}
+    </div>
+    <div class="selectores" role="group" aria-label="Elegir anuncio" hidden>
+        {anuncios.map((anuncio, index) => (
+            <button type="button" data-select={index} aria-label={`Mostrar anuncio ${index + 1}: ${anuncio.categoria}`} aria-pressed={index === 0}><span></span></button>
+        ))}
+    </div>
+    {anuncios.map(anuncio => (
+        <dialog id={`oferta-${anuncio.id}`} aria-labelledby={`titulo-${anuncio.id}`}>
+            <header class="dialog-header">
+                <p class="categoria">{anuncio.categoria}</p>
+                <form method="dialog"><button class="cerrar" aria-label="Cerrar detalles"><XIcon size={22} /></button></form>
+            </header>
+            <h2 id={`titulo-${anuncio.id}`}>{anuncio.titulo}</h2>
+            <p class="dialog-beneficio">{anuncio.beneficio}</p>
+            <div class="dialog-oferta">
+                <div>
+                    <p class="dialog-etiqueta">{anuncio.id === "ctf" ? "Inscripción" : "Precio"}</p>
+                    <p class="dialog-precio">{anuncio.precio}<span>{anuncio.unidad}</span></p>
+                </div>
+                <div class="dialog-destacado">
+                    <strong>{anuncio.destacado}</strong>
+                    <span>{anuncio.referencia}</span>
+                </div>
+            </div>
+            <dl class="dialog-datos">
+                {anuncio.datos.map(dato => (
+                    <div><dt>{dato.etiqueta}</dt><dd>{dato.valor}</dd></div>
+                ))}
+            </dl>
+            <section class="dialog-incluye" aria-labelledby={`incluye-${anuncio.id}`}>
+                <h3 id={`incluye-${anuncio.id}`}>{anuncio.encabezado}</h3>
+                <ul>{anuncio.incluye.map(item => <li>{item}</li>)}</ul>
+            </section>
+            <form method="dialog" class="dialog-footer">
+                <button class="dialog-volver">Volver a los anuncios</button>
+            </form>
+        </dialog>
+    ))}
+</section>
+
+<script>
+    const banner = document.querySelector<HTMLElement>("[data-anuncios]");
+    if (banner) {
+        const slides = [...banner.querySelectorAll<HTMLElement>("[data-slide]")];
+        const selectors = [...banner.querySelectorAll<HTMLButtonElement>("[data-select]")];
+        const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)");
+        let current = 0;
+        let timer: ReturnType<typeof setTimeout> | undefined;
+        let changing = false;
+        let hovering = false;
+
+        function schedule() {
+            clearTimeout(timer);
+            if (changing || hovering || reducedMotion.matches || document.hidden || banner!.matches(":focus-within") || banner!.querySelector("dialog[open]")) return;
+            timer = setTimeout(() => show((current + 1) % slides.length), 8500);
+        }
+
+        async function show(next: number) {
+            if (changing || next === current) return;
+            clearTimeout(timer);
+            changing = true;
+            const outgoing = slides[current];
+            if (!reducedMotion.matches) {
+                await outgoing.animate([{ transform: "translateX(0)", opacity: 1 }, { transform: "translateX(100%)", opacity: 0 }], { duration: 280, easing: "ease-in" }).finished;
+            }
+            // The previous ad disappears completely before the next one enters.
+            outgoing.hidden = true;
+            current = next;
+            slides[current].hidden = false;
+            selectors.forEach((selector, index) => selector.setAttribute("aria-pressed", String(index === current)));
+            if (!reducedMotion.matches) {
+                await slides[current].animate([{ transform: "translateX(-100%)", opacity: 0 }, { transform: "translateX(0)", opacity: 1 }], { duration: 350, easing: "ease-out" }).finished;
+            }
+            changing = false;
+            schedule();
+        }
+
+        selectors.forEach((selector, index) => selector.addEventListener("click", () => show(index)));
+        banner.querySelector<HTMLElement>(".selectores")!.hidden = false;
+        banner.addEventListener("pointerenter", event => {
+            if (event.pointerType === "mouse") { hovering = true; clearTimeout(timer); }
+        });
+        banner.addEventListener("pointerleave", () => { hovering = false; schedule(); });
+        banner.addEventListener("focusin", () => clearTimeout(timer));
+        banner.addEventListener("focusout", () => setTimeout(schedule, 0));
+        document.addEventListener("visibilitychange", schedule);
+        reducedMotion.addEventListener("change", schedule);
+        banner.querySelectorAll<HTMLButtonElement>("[data-open]").forEach(button => {
+            button.addEventListener("click", () => {
+                clearTimeout(timer);
+                banner.querySelector<HTMLDialogElement>(`#oferta-${button.dataset.open}`)?.showModal();
+            });
+        });
+        banner.querySelectorAll("dialog").forEach(dialog => dialog.addEventListener("close", schedule));
+        schedule();
+    }
+</script>
+
+<style>
+    .banner {
+        position: relative;
+        width: 100%;
+        margin-top: .5rem;
+        border-block: 1px solid var(--accent);
+        background: var(--card);
+    }
+
+    .banner::before,
+    .banner::after {
+        content: "";
+        position: absolute;
+        inset-inline: 0;
+        height: 1px;
+        z-index: 1;
+        pointer-events: none;
+        background: linear-gradient(90deg, transparent, color-mix(in oklab, var(--accent) 60%, white), transparent) -30% 0 / 22% 100% no-repeat;
+        filter: drop-shadow(0 0 3px var(--accent));
+        animation: destello-borde 7s ease-in-out infinite;
+    }
+
+    .banner::before { top: -1px; }
+    .banner::after { bottom: -1px; animation-direction: reverse; }
+
+    .banner-window { overflow: hidden; }
+
+    .anuncio {
+        position: relative;
+        isolation: isolate;
+        display: grid;
+        grid-template-columns: 180px minmax(0, 1fr) auto 190px;
+        align-items: center;
+        gap: clamp(16px, 2vw, 36px);
+        min-height: 120px;
+        padding: 0 clamp(16px, 4.2vw, 72px) 0 0;
+        background: linear-gradient(110deg, #080a09, var(--card) 45%, color-mix(in oklab, var(--accent) 12%, var(--card)));
+    }
+
+    [hidden] { display: none !important; }
+
+    .anuncio-imagen {
+        position: relative;
+        height: 120px;
+        overflow: hidden;
+        mask-image: linear-gradient(90deg, #000 65%, transparent);
+    }
+
+    .anuncio-imagen::after {
+        position: absolute;
+        inset: -30%;
+        content: "";
+        pointer-events: none;
+        background: linear-gradient(115deg, transparent 35%, color-mix(in oklab, var(--accent) 22%, transparent) 50%, transparent 65%);
+        transform: translateX(-70%);
+        animation: barrido 5s ease-in-out infinite;
+    }
+
+    .anuncio-imagen img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: grayscale(1);
+        animation: flotar 5s ease-in-out infinite alternate;
+    }
+
+    .retrato img { object-position: center 30%; }
+    .anuncio-copy { position: relative; min-width: 0; padding-block: 12px; }
+
+    h2 {
+        font: 700 clamp(20px, 1.9vw, 30px)/1.1 var(--font-mono);
+        letter-spacing: -.045em;
+        text-wrap: balance;
+    }
+
+    .beneficio { margin-top: 5px; font-size: 15px; line-height: 1.3; color: var(--accent); }
+    .lugar-fecha { margin-top: 5px; font-size: 13px; line-height: 1.3; color: var(--foreground); }
+    .oferta { position: relative; padding-left: 22px; border-left: 1px solid var(--border); }
+
+    .precio {
+        color: var(--accent);
+        font: 700 clamp(28px, 3vw, 42px)/1.1 var(--font-mono);
+        letter-spacing: -.055em;
+        white-space: nowrap;
+    }
+
+    .precio span { display: block; margin-top: 3px; font: 500 12px var(--font-sans); letter-spacing: 0; color: var(--foreground); }
+    .conversion { position: relative; }
+
+    .cta {
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+        width: 100%;
+        min-height: 44px;
+        padding: 0 14px;
+        background: var(--accent);
+        color: var(--background);
+        font: 700 12px var(--font-mono);
+        cursor: pointer;
+        transition: filter .2s;
+    }
+
+    .cta::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background: linear-gradient(110deg, transparent 30%, #ffffff60 50%, transparent 70%);
+        transform: translateX(-110%);
+        animation: brillo 4.5s ease-in-out infinite;
+    }
+
+    .cta:hover { filter: brightness(1.15); }
+    .cta :global(svg) { flex-shrink: 0; }
+    .selectores { position: absolute; right: clamp(16px, 4.2vw, 72px); bottom: 0; display: flex; gap: 4px; }
+    .selectores button { display: grid; place-items: center; width: 32px; height: 20px; cursor: pointer; }
+    .selectores span { width: 24px; height: 2px; background: var(--border); }
+    .selectores [aria-pressed="true"] span { background: var(--accent); }
+
+    dialog {
+        margin: auto;
+        width: min(680px, calc(100% - 32px));
+        max-height: calc(100dvh - 32px);
+        padding: clamp(20px, 4vw, 32px);
+        overflow-y: auto;
+        border: 1px solid var(--accent);
+        background: var(--card);
+        color: var(--foreground);
+    }
+
+    dialog::backdrop { background: #000c; backdrop-filter: blur(5px); }
+    .dialog-header { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .categoria { color: var(--accent); font: 500 12px/1.5 var(--font-mono); }
+    .cerrar { display: grid; place-items: center; width: 44px; height: 44px; cursor: pointer; }
+    dialog h2 { margin-top: 12px; font-size: clamp(23px, 4vw, 30px); text-wrap: initial; }
+    .dialog-beneficio { margin-top: 10px; font-size: 15px; line-height: 1.5; }
+    .dialog-oferta { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 24px; margin-top: 24px; padding: 20px; border: 1px solid var(--border); background: color-mix(in oklab, var(--accent) 7%, var(--card)); }
+    .dialog-etiqueta, .dialog-datos dt { color: var(--muted-foreground); font-size: 13px; line-height: 1.5; }
+    .dialog-precio { margin-top: 4px; color: var(--accent); font: 700 32px/1.2 var(--font-mono); letter-spacing: -.04em; }
+    .dialog-precio span { display: block; margin-top: 4px; color: var(--foreground); font: 400 13px/1.5 var(--font-sans); letter-spacing: 0; }
+    .dialog-destacado { display: grid; gap: 6px; padding-left: 20px; border-left: 1px solid var(--border); }
+    .dialog-destacado strong { color: var(--accent); font: 600 18px/1.3 var(--font-mono); }
+    .dialog-destacado span { font-size: 13px; line-height: 1.5; }
+    .dialog-datos { display: grid; grid-template-columns: 1fr 1fr; gap: 20px 24px; margin-block: 24px; }
+    .dialog-datos dd { margin-top: 4px; font-size: 15px; font-weight: 500; line-height: 1.5; }
+    .dialog-incluye { padding-top: 20px; border-top: 1px solid var(--border); }
+    .dialog-incluye h3 { font: 600 15px/1.5 var(--font-mono); }
+    .dialog-incluye ul { display: grid; gap: 9px; margin-top: 12px; padding-left: 20px; list-style: disc; font-size: 14px; line-height: 1.5; }
+    .dialog-incluye li::marker { color: var(--accent); }
+    .dialog-footer { margin-top: 24px; display: flex; justify-content: flex-end; }
+    .dialog-volver { min-height: 44px; padding: 10px 16px; border: 1px solid var(--border); font-size: 14px; cursor: pointer; }
+    .dialog-volver:hover { border-color: var(--accent); color: var(--accent); }
+
+    @media (max-width: 479px) {
+        .dialog-oferta { grid-template-columns: 1fr; gap: 16px; padding: 16px; }
+        .dialog-destacado { padding: 12px 0 0; border-left: none; border-top: 1px solid var(--border); }
+        .dialog-datos { grid-template-columns: 1fr; gap: 16px; }
+        .dialog-volver { width: 100%; }
+    }
+
+    @keyframes destello-borde {
+        0%, 10% { background-position: -30% 0; opacity: 0; }
+        25%, 75% { opacity: .8; }
+        90%, 100% { background-position: 130% 0; opacity: 0; }
+    }
+
+    @keyframes flotar {
+        from { transform: translateX(-3px) scale(1.02); }
+        to { transform: translateX(5px) scale(1.1); }
+    }
+
+    @keyframes barrido {
+        0%, 15% { transform: translateX(-70%); opacity: 0; }
+        40% { opacity: 1; }
+        85%, 100% { transform: translateX(70%); opacity: 0; }
+    }
+
+    @keyframes brillo {
+        0%, 45% { transform: translateX(-110%); }
+        80%, 100% { transform: translateX(110%); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .banner::before, .banner::after { display: none; animation: none; }
+        .anuncio-imagen img, .anuncio-imagen::after, .cta::after { animation: none; }
+        .anuncio-imagen::after, .cta::after { display: none; }
+    }
+
+    @media (min-width: 1600px) {
+        .anuncio { grid-template-columns: 260px minmax(0, 1fr) 210px 210px; }
+    }
+
+    @media (max-width: 1100px) {
+        .anuncio { grid-template-columns: 120px minmax(0, 1fr) auto 170px; gap: 14px; padding-right: 24px; }
+        .oferta { padding-left: 14px; }
+        .selectores { right: 24px; }
+    }
+
+    @media (max-width: 799px) {
+        .anuncio { grid-template-columns: minmax(0, 1fr) auto 160px; padding-left: 20px; }
+        .anuncio-imagen { position: absolute; inset: 0 0 0 auto; width: 180px; height: 100%; z-index: -1; opacity: .35; mask-image: linear-gradient(90deg, transparent, #000 80%); }
+        .beneficio { font-size: 13px; }
+        .lugar-fecha { font-size: 12px; }
+    }
+
+    @media (max-width: 599px) {
+        .anuncio { min-height: 156px; grid-template-columns: minmax(0, 1fr) 156px; grid-template-rows: 1fr auto; gap: 8px 12px; padding: 10px 16px 24px; }
+        .anuncio-copy { grid-column: 1 / -1; padding: 0; }
+        h2 { font-size: 20px; text-wrap: initial; }
+        .beneficio { font-size: 13px; margin-top: 4px; }
+        .lugar-fecha { font-size: 12px; margin-top: 4px; }
+        .oferta { padding: 0; border: none; }
+        .precio { font-size: 27px; }
+        .precio span { display: inline; margin-left: 5px; font-size: 11px; }
+        .cta { padding-inline: 10px; font-size: 11px; }
+        .selectores { right: 16px; }
+    }
+
+    @media (max-width: 359px) {
+        .anuncio { padding-inline: 12px; column-gap: 10px; grid-template-columns: minmax(0, 1fr) 142px; }
+        h2 { font-size: 18px; }
+        .precio { font-size: 26px; }
+        .precio span { display: block; margin: 0; }
+        .cta { font-size: 10px; }
+    }
+</style>
